@@ -2,12 +2,9 @@ package com.inventory.project.Entity;
 
 public enum UnitType
 {
-number,
-box,
-piece,
-kilogram,
-litre,
-
-
-	
+	NUMBER,
+    BOX,
+    PIECE,
+    KILOGRAM,
+    LITRE
 }

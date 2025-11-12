@@ -4,10 +4,12 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.inventory.project.Entity.Product;
 import com.inventory.project.Myrepo.ProductRepo;
 
+@Service
 public class ProductService 
 {
     
@@ -28,7 +30,6 @@ public class ProductService
         {
             Product existingProduct = optionalProduct.get();
 
-            existingProduct.setId(updatedProduct.getId());
             existingProduct.setName(updatedProduct.getName());
             existingProduct.setunittype(updatedProduct.getunittype());
             existingProduct.setSalesprice(updatedProduct.getSalesprice());

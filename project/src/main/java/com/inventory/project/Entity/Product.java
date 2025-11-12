@@ -60,7 +60,7 @@ public class Product
 		return unittype;
 	}
 
-	public void setunittype(UnitType selectunit) {
+	public void setunittype(UnitType unittype) {
 		this.unittype = unittype;
 	}
 
