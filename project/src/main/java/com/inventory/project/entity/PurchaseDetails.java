@@ -1,9 +1,12 @@
 package com.inventory.project.entity;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class PurchaseDetails {
@@ -12,7 +15,10 @@ public class PurchaseDetails {
 	private Integer purch_id;
 	
 	private Supplier supplier;
-	private Items items;
+	
+	 @ManyToOne(cascade = CascadeType.ALL)
+	    @JoinColumn(name = "item_id") // foreign key column
+	    private Items items;
 	
 	public Integer getPurch_id() {
 		return purch_id;

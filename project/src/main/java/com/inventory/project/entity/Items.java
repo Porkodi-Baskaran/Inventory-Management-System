@@ -18,6 +18,9 @@ public class Items {
 	private Integer taxrate;
 	private boolean tax_present;
 	
+	
+		
+	
 	public Integer getItem_id() {
 		return item_id;
 	}
