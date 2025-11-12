@@ -1,5 +1,12 @@
 package com.inventory.project.entity;
 
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -7,6 +14,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class PurchaseDetails {
@@ -14,11 +22,14 @@ public class PurchaseDetails {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer purch_id;
 	
+	@ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @JoinColumn(name = "supplier_id")
+	@JsonBackReference
 	private Supplier supplier;
 	
-	 @ManyToOne(cascade = CascadeType.ALL)
-	    @JoinColumn(name = "item_id") // foreign key column
-	    private Items items;
+	@OneToMany(mappedBy = "purchaseDetails", cascade = CascadeType.ALL)    
+	@JsonManagedReference
+	private List<Items> items;
 	
 	public Integer getPurch_id() {
 		return purch_id;
@@ -32,22 +43,23 @@ public class PurchaseDetails {
 	public void setSupplier(Supplier supplier) {
 		this.supplier = supplier;
 	}
-	public Items getItems() {
+	
+	public List<Items> getItems() {
 		return items;
 	}
-	public void setItems(Items items) {
+	public void setItems(List<Items> items) {
 		this.items = items;
 	}
-	public PurchaseDetails(Integer purch_id, Supplier supplier, Items items) {
+	
+	public PurchaseDetails(Integer purch_id, Supplier supplier, List<Items> items) {
 		super();
 		this.purch_id = purch_id;
 		this.supplier = supplier;
 		this.items = items;
 	}
-	
 	@Override
 	public String toString() {
 		return "PurchaseDetails [purch_id=" + purch_id + ", supplier=" + supplier + ", items=" + items + "]";
 	}
-
+	
 }

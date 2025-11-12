@@ -1,9 +1,9 @@
 package com.inventory.project.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,15 +12,16 @@ import com.inventory.project.entity.PurchaseDetails;
 import com.inventory.project.service.PurchaseService;
 
 @RestController
-@RequestMapping("/purchases")
+@RequestMapping("/purchase")
 public class PurchaseController {
 	@Autowired
 	private PurchaseService purchaseService;
 	
 	// Add Purchase
     @PostMapping("/add")
-    public PurchaseDetails addPurchase(@RequestBody PurchaseDetails purchaseDetails) {
-        return purchaseService.addPurchase(purchaseDetails);
+    public ResponseEntity<String> addPurchase(@RequestBody PurchaseDetails purchaseDetails) {
+        String res=purchaseService.addPurchase(purchaseDetails);
+        return new ResponseEntity<>(res, HttpStatus.CREATED);
         }
    
 }

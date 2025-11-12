@@ -1,11 +1,21 @@
 package com.inventory.project.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 @Entity
+@JsonIgnoreProperties("purchaseDetails")
 public class Items {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer item_id;
 	private String name;
 	private Integer qty;
@@ -18,9 +28,17 @@ public class Items {
 	private Integer taxrate;
 	private boolean tax_present;
 	
+	@ManyToOne
+	@JoinColumn(name = "purchase_id")
+	@JsonBackReference
+	private PurchaseDetails purchaseDetails;
 	
-		
-	
+	public PurchaseDetails getPurchaseDetails() {
+		return purchaseDetails;
+	}
+	public void setPurchaseDetails(PurchaseDetails purchaseDetails) {
+		this.purchaseDetails = purchaseDetails;
+	}
 	public Integer getItem_id() {
 		return item_id;
 	}
@@ -72,8 +90,8 @@ public class Items {
 	}
 	
 	public Items() {}
-
-	public Items(Integer item_id, String name, Integer qty, Unit unit, Integer price, Integer discount, Integer tax, boolean taxpresent) {
+	public Items(Integer item_id, String name, Integer qty, Unit unit, Integer price, Integer discount, Integer taxrate,
+			boolean tax_present, PurchaseDetails purchaseDetails) {
 		super();
 		this.item_id = item_id;
 		this.name = name;
@@ -81,14 +99,16 @@ public class Items {
 		this.unit = unit;
 		this.price = price;
 		this.discount = discount;
-		this.taxrate = tax;
-		this.tax_present=taxpresent;
+		this.taxrate = taxrate;
+		this.tax_present = tax_present;
+		this.purchaseDetails = purchaseDetails;
 	}
-	
 	@Override
 	public String toString() {
 		return "Items [item_id=" + item_id + ", name=" + name + ", qty=" + qty + ", unit=" + unit + ", price=" + price
-				+ ", discount=" + discount + ", tax=" + taxrate + ", taxpresent=" +tax_present +" ]";
+				+ ", discount=" + discount + ", taxrate=" + taxrate + ", tax_present=" + tax_present
+				+ ", purchaseDetails=" + purchaseDetails + "]";
 	}
-	
+
+		
 }
