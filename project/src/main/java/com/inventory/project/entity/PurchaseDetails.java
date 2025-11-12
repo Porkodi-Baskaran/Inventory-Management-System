@@ -3,9 +3,7 @@ package com.inventory.project.entity;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -50,7 +48,9 @@ public class PurchaseDetails {
 	public void setItems(List<Items> items) {
 		this.items = items;
 	}
-	
+	 public PurchaseDetails() {
+	    }
+
 	public PurchaseDetails(Integer purch_id, Supplier supplier, List<Items> items) {
 		super();
 		this.purch_id = purch_id;
