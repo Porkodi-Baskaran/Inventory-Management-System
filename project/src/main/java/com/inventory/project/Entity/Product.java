@@ -1,6 +1,7 @@
 package com.inventory.project.Entity;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -8,6 +9,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
@@ -39,6 +41,8 @@ public class Product
     
     private LocalDate updatedate;
     
+    @OneToMany(mappedBy = "product")
+    private List<Transaction> transactions;
     
     public Integer getId() {
 		return id;
