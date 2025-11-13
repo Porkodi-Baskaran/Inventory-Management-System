@@ -28,6 +28,16 @@ public class PurchaseDetails {
 	@JsonManagedReference
 	private List<Items> items;
 	
+	
+	private Integer total_amount;
+	
+	public Integer getTotal_amount() {
+		return total_amount;
+	}
+	public void setTotal_amount(Integer total_amount) {
+		this.total_amount = total_amount;
+	}
+	
 	public Integer getPurch_id() {
 		return purch_id;
 	}

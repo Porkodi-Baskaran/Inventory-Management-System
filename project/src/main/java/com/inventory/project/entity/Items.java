@@ -91,7 +91,7 @@ public class Items {
 	
 	public Items() {}
 	public Items(Integer item_id, String name, Integer qty, Unit unit, Integer price, Integer discount, Integer taxrate,
-			boolean tax_present, PurchaseDetails purchaseDetails) {
+			boolean tax_present,  PurchaseDetails purchaseDetails) {
 		super();
 		this.item_id = item_id;
 		this.name = name;
@@ -109,6 +109,6 @@ public class Items {
 				+ ", discount=" + discount + ", taxrate=" + taxrate + ", tax_present=" + tax_present
 				+ ", purchaseDetails=" + purchaseDetails + "]";
 	}
-
+	
 		
 }
