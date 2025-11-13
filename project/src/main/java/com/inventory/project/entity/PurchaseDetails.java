@@ -57,7 +57,9 @@ public class PurchaseDetails {
 	public void setItems(List<Items> items) {
 		this.items = items;
 	}
-	
+	 public PurchaseDetails() {
+	    }
+
 	public PurchaseDetails(Integer purch_id, Supplier supplier, List<Items> items) {
 		super();
 		this.purch_id = purch_id;
