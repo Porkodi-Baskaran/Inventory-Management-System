@@ -35,7 +35,7 @@ public class Transaction
     
     private Integer quantity;
     
-    private Double priceperunit;
+    private Integer priceperunit;
     
     private String status;
 
@@ -87,11 +87,11 @@ public class Transaction
 		this.quantity = quantity;
 	}
 
-	public Double getPriceperunit() {
+	public Integer getPriceperunit() {
 		return priceperunit;
 	}
 
-	public void setPriceperunit(Double priceperunit) {
+	public void setPriceperunit(Integer priceperunit) {
 		this.priceperunit = priceperunit;
 	}
 

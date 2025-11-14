@@ -18,8 +18,21 @@ public class ProductService
 	
 	public Product addproduct(Product products)
 	{
+		updateStockValue(products);
 		repo.save(products);
 		return products;
+	}
+	
+	public void updateStockValue(Product products)
+	{
+		if(products.getPurchaseprice() !=null && products.getOpeningquantity()!=null )
+		{
+			products.setStockValue(products.getPurchaseprice() * products.getOpeningquantity());
+		}
+		else
+		{
+			products.setStockValue(0);
+		}
 	}
 	
 	public Product updateProduct(Integer id, Product updatedProduct) 

@@ -31,7 +31,7 @@ public class Product
     
     private Integer purchaseprice;
     
-    private Double taxrate;
+    private Integer taxrate;
     
     private Integer openingquantity;
     
@@ -40,6 +40,8 @@ public class Product
     private Integer lowstock;
     
     private LocalDate updatedate;
+    
+    private Integer stockValue;
     
     @OneToMany(mappedBy = "product")
     private List<Transaction> transactions;
@@ -58,6 +60,14 @@ public class Product
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public Integer getStockValue() {
+		return stockValue;
+	}
+
+	public void setStockValue(Integer stockValue) {
+		this.stockValue = stockValue;
 	}
 
 	public UnitType getunittype() {
@@ -84,11 +94,11 @@ public class Product
 		this.purchaseprice = purchaseprice;
 	}
 
-	public Double getTaxrate() {
+	public Integer getTaxrate() {
 		return taxrate;
 	}
 
-	public void setTaxrate(Double taxrate) {
+	public void setTaxrate(Integer taxrate) {
 		this.taxrate = taxrate;
 	}
 

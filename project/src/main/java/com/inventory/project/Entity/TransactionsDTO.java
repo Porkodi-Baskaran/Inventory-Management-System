@@ -2,11 +2,11 @@ package com.inventory.project.Entity;
 
 public class TransactionsDTO 
 {
-	 private Integer productId;
+		private Integer productId;
 	    private String type;       
 	    private String name;
 	    private Integer quantity;
-	    private Double pricePerUnit;
+	    private Integer pricePerUnit;
 	    private String status;
 	    
 	    
@@ -35,10 +35,10 @@ public class TransactionsDTO
 		public void setQuantity(Integer quantity) {
 			this.quantity = quantity;
 		}
-		public Double getPricePerUnit() {
+		public Integer getPricePerUnit() {
 			return pricePerUnit;
 		}
-		public void setPricePerUnit(Double pricePerUnit) {
+		public void setPricePerUnit(Integer pricePerUnit) {
 			this.pricePerUnit = pricePerUnit;
 		}
 		public String getStatus() {

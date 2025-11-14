@@ -2,6 +2,7 @@ package com.inventory.project.myservice;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -50,5 +51,11 @@ public class TransactionService
 	public List<Transaction> getAllTransaction()
 	{
 		return transrepo.findAll();
+	}
+	
+	public Transaction getTransactionById(Integer id)
+	{
+		Transaction transaction = transrepo.findById(id).orElseThrow(()->new RuntimeException("Product not found"));
+		return transaction;
 	}
 }
