@@ -2,7 +2,7 @@ package com.inventory.project.Entity;
 
 public enum TransactionType 
 {
-	   PURCHASE,
+	   	PURCHASE,
 	    SALE,
 	    ADD_ADJUSTMENT,
 	    REDUCE_ADJUSTMENT,
