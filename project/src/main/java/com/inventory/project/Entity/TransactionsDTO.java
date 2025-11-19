@@ -1,12 +1,29 @@
 package com.inventory.project.Entity;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
+
 public class TransactionsDTO 
 {
+	 @NotNull(message = "Product ID is required")
 		private Integer productId;
-	    private String type;       
+	 
+	 @NotBlank(message = "Transaction type is required")
+	    private String type;
+	 
+	 @NotBlank(message = "Name is required")
 	    private String name;
+	 
+	 @NotNull(message = "Quantity is required")
+	    @Positive(message = "Quantity must be positive")
 	    private Integer quantity;
+	 
+	 @NotNull(message = "Price per unit is required")
+	    @Positive(message = "Price per unit must be positive")
 	    private Integer pricePerUnit;
+	 
+	 @NotBlank(message = "Status is required")
 	    private String status;
 	    
 	    

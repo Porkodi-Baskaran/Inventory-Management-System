@@ -10,8 +10,14 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+
+
 
 @Entity
 @NoArgsConstructor
@@ -22,23 +28,38 @@ public class Product
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     
+    @NotBlank(message = "Product name is required")
 	private String name;
     
+    @NotNull(message = "Unit type is required")
 	@Enumerated(EnumType.STRING)
     private UnitType unittype;
     
+    @NotNull(message = "Sales price is required")
+    @Positive(message = "Sales price must be positive")
     private Integer salesprice;
     
+    @NotNull(message = "Purchase price is required")
+    @Positive(message = "Purchase price must be positive")
     private Integer purchaseprice;
     
+    @NotNull(message = "Tax rate is required")
+    @Min(value = 0, message = "Tax rate cannot be negative")
     private Integer taxrate;
     
+    @NotNull(message = "Opening quantity is required")
+    @Min(value = 0, message = "Opening quantity cannot be negative")
     private Integer openingquantity;
     
+    @NotNull(message = "At price is required")
+    @Positive(message = "At price must be positive")
     private Integer Atprice;
     
+    @NotNull(message = "Low stock value is required")
+    @Min(value = 0, message = "Low stock must be 0 or more")
     private Integer lowstock;
     
+    @NotNull(message = "Update date is required")
     private LocalDate updatedate;
     
     private Integer stockValue;

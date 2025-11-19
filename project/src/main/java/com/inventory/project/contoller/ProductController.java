@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.inventory.project.Entity.Product;
 import com.inventory.project.myservice.ProductService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/product")
 public class ProductController {
@@ -26,14 +28,14 @@ public class ProductController {
 	ProductService productService;
 	
 	@PostMapping
-	public ResponseEntity<Product> addProduct(@RequestBody Product product)
+	public ResponseEntity<Product> addProduct(@Valid @RequestBody Product product)
 	{
 		Product savedProduct = productService.addproduct(product);
 		return new ResponseEntity<>(savedProduct,HttpStatus.CREATED);
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<?> updateProduct(@PathVariable Integer id,@RequestBody Product updatedProduct)
+	public ResponseEntity<?> updateProduct(@Valid @PathVariable Integer id,@RequestBody Product updatedProduct)
 	{
 		Product product = productService.updateProduct(id, updatedProduct);
 		if(product !=null)
@@ -48,7 +50,7 @@ public class ProductController {
 	}
 	
 	@DeleteMapping("/{id}")
-	public ResponseEntity<String> deleteProduct(@PathVariable Integer id)
+	public ResponseEntity<String> deleteProduct( @PathVariable Integer id)
 	{
 		try {
 			String result=productService.deleteProduct(id);

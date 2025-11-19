@@ -42,16 +42,43 @@ public class ProductService
         if (optionalProduct.isPresent()) 
         {
             Product existingProduct = optionalProduct.get();
-
+           if(updatedProduct.getName() !=null)
+           {
             existingProduct.setName(updatedProduct.getName());
+           }
+           if(updatedProduct.getunittype() !=null)
+           {
             existingProduct.setunittype(updatedProduct.getunittype());
+           }
+           if(updatedProduct.getSalesprice() !=null)
+           {
             existingProduct.setSalesprice(updatedProduct.getSalesprice());
+           }
+           if(updatedProduct.getPurchaseprice() !=null)
+           {
             existingProduct.setPurchaseprice(updatedProduct.getPurchaseprice());
+           }
+           if(updatedProduct.getTaxrate() !=null)
+           {
             existingProduct.setTaxrate(updatedProduct.getTaxrate());
+           }
+           if(updatedProduct.getOpeningquantity() !=null)
+           {
             existingProduct.setOpeningquantity(updatedProduct.getOpeningquantity());
+           }
+           if(updatedProduct.getAtprice() !=null)
+           {
             existingProduct.setAtprice(updatedProduct.getAtprice());
+           }
+           if(updatedProduct.getLowstock() !=null)
+           {
             existingProduct.setLowstock(updatedProduct.getLowstock());
+           }
+           if(updatedProduct.getUpdatedate() !=null)
+           {
             existingProduct.setUpdatedate(updatedProduct.getUpdatedate());
+           }
+          
              return repo.save(existingProduct);
         } 
         

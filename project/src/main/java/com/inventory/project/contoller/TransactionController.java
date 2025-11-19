@@ -16,6 +16,8 @@ import com.inventory.project.Entity.Transaction;
 import com.inventory.project.Entity.TransactionsDTO;
 import com.inventory.project.myservice.TransactionService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/transactions")
 public class TransactionController
@@ -36,7 +38,7 @@ public class TransactionController
      }
      
      @PostMapping
-     public ResponseEntity<String> recordTransaction(@RequestBody TransactionsDTO dto) {
+     public ResponseEntity<String> recordTransaction(@Valid @RequestBody TransactionsDTO dto) {
     	 transactionservice.recordtransaction(dto);
          return ResponseEntity.ok("Transaction recorded successfully");
      }
